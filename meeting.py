@@ -6,7 +6,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtSql import *
 from Meeting_Main import Ui_MainWindow
-from datebase import database
 
 
 class meeting(QMainWindow,Ui_MainWindow):
@@ -30,12 +29,14 @@ class meeting(QMainWindow,Ui_MainWindow):
         self.meetingdb.setDatabaseName('./meeting.db')
         self.meetingdb.open()
 
+    def meeting_search(self):
+        pass
 
     def formate_tableview(self):
         headtitle=['序号','会议名称','会议时间','会议室名称','中介名称','项目类型']
         self.Girdmodel=QStandardItemModel(6,6)
         self.Girdmodel.setHorizontalHeaderLabels(headtitle)
-        self.Girdmodel.setTable('DateMeeting')
+
 
         
 if __name__=="__main__":
