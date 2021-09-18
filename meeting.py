@@ -29,7 +29,8 @@ class meeting(QMainWindow,Ui_MainWindow):
         self.model.setHeaderData(5, Qt.Horizontal, '项目类型')
 
         self.db = QSqlDatabase.addDatabase('QSQLITE')
-        self.db.setDatabaseName('meeting.db')
+        self.db.setDatabaseName('./meeting.db')
+        self.db.open()
 
         self.tableView.setModel(self.model)
 
@@ -38,18 +39,6 @@ class meeting(QMainWindow,Ui_MainWindow):
         today=datetime.date.today()
         self.dateEdit1.setDate(today)
         self.dateEdit2.setDate(today+datetime.timedelta(days=1))
-
-
-
-
-
-        # self.model.setHeaderData(0, '序号')
-        # self.model.setHeaderData(1,'会议名称')
-        # self.model.setHeaderData(2,'会议时间')
-        # self.model.setHeaderData(3,'会议室名称')
-        # self.model.setHeaderData(4,'中介名称')
-        # self.model.setHeaderData(5, '项目类型')
-
 
         
 if __name__=="__main__":

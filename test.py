@@ -65,7 +65,7 @@ class MainUi(QtWidgets.QMainWindow):
                 self.db_name = db_text
                 # 添加一个sqlite数据库连接并打开
                 db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-                db.setDatabaseName('{}.sqlite'.format(db_text))
+                db.setDatabaseName('{}.db'.format(db_text))
                 db.open()
                 # 实例化一个查询对象
                 query = QtSql.QSqlQuery()
