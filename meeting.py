@@ -38,6 +38,7 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.tableView.setColumnWidth(4, 100)
         self.tableView.setColumnWidth(4, 100)
 
+
     def format_datetime(self):
         today = datetime.date.today()
         self.dateEdit1.setDate(today)
