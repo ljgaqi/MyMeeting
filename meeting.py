@@ -15,9 +15,23 @@ class meeting(QMainWindow,Ui_MainWindow):
         self.format_datetime()
         # self.tableView.horizontalHeader().setStretchLastSection(True)    # 充满整个表格框
         # self.tableView.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)   #根据需要，分配各行长度
-        self.pushButton1.clicked.connect(self.formate_tableview)
-        self.connect_datebase()
-        self.formate_tableview()
+        # self.pushButton1.clicked.connect(self.formate_tableview)
+
+        self.model = QSqlTableModel()
+        self.model.setTable('DateMeeting')
+        self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
+        self.model.select()
+        self.model.setHeaderData(0, Qt.Horizontal, '序号')
+        self.model.setHeaderData(1, Qt.Horizontal, '会议名称')
+        self.model.setHeaderData(2, Qt.Horizontal, '会议时间')
+        self.model.setHeaderData(3, Qt.Horizontal, '会议室')
+        self.model.setHeaderData(4, Qt.Horizontal, '中介名称')
+        self.model.setHeaderData(5, Qt.Horizontal, '项目类型')
+
+        self.db = QSqlDatabase.addDatabase('QSQLITE')
+        self.db.setDatabaseName('meeting.db')
+
+        self.tableView.setModel(self.model)
 
 
     def format_datetime(self):
@@ -25,23 +39,8 @@ class meeting(QMainWindow,Ui_MainWindow):
         self.dateEdit1.setDate(today)
         self.dateEdit2.setDate(today+datetime.timedelta(days=1))
 
-    def connect_datebase(self):
-        self.meetingdb=QSqlDatabase.addDatabase('SQLITE')
-        self.meetingdb.setDatabaseName('./meeting.db')
-        self.meetingdb.open()
 
-    def meeting_search(self):
-        pass
 
-    def formate_tableview(self):
-        # headtitle=['序号','会议名称','会议时间','会议室名称','中介名称','项目类型']
-        # self.Girdmodel=QStandardItemModel(6,6)
-        # self.Girdmodel.setHorizontalHeaderLabels(headtitle)
-        self.model=QSqlTableModel()
-        self.tableView.setModel(self.model)
-        self.model.setTable('DateMeeting')
-        self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
-        self.model.select()
 
 
         # self.model.setHeaderData(0, '序号')
