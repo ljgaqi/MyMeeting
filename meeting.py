@@ -8,14 +8,15 @@ from PyQt5.QtSql import *
 from Meeting_Main import Ui_MainWindow
 
 
-class meeting(QMainWindow,Ui_MainWindow):
+class meeting(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        super(meeting,self).__init__(parent)
+        super(meeting, self).__init__(parent)
         self.setupUi(self)
         self.format_datetime()
-        # self.tableView.horizontalHeader().setStretchLastSection(True)    # 充满整个表格框
-        # self.tableView.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)   #根据需要，分配各行长度
-        # self.pushButton1.clicked.connect(self.formate_tableview)
+
+        self.db = QSqlDatabase.addDatabase('QSQLITE')
+        self.db.setDatabaseName('./meeting.db')
+        self.db.open()
 
         self.model = QSqlTableModel()
         self.model.setTable('DateMeeting')
@@ -28,21 +29,23 @@ class meeting(QMainWindow,Ui_MainWindow):
         self.model.setHeaderData(4, Qt.Horizontal, '中介名称')
         self.model.setHeaderData(5, Qt.Horizontal, '项目类型')
 
-        self.db = QSqlDatabase.addDatabase('QSQLITE')
-        self.db.setDatabaseName('./meeting.db')
-        self.db.open()
-
         self.tableView.setModel(self.model)
 
+        self.tableView.setColumnWidth(0, 40)
+        self.tableView.setColumnWidth(1, 400)
+        self.tableView.setColumnWidth(2, 200)
+        self.tableView.setColumnWidth(3, 100)
+        self.tableView.setColumnWidth(4, 100)
+        self.tableView.setColumnWidth(4, 100)
 
     def format_datetime(self):
-        today=datetime.date.today()
+        today = datetime.date.today()
         self.dateEdit1.setDate(today)
-        self.dateEdit2.setDate(today+datetime.timedelta(days=1))
+        self.dateEdit2.setDate(today + datetime.timedelta(days=1))
 
-        
-if __name__=="__main__":
-    app=QApplication(sys.argv)
-    main=meeting()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    main = meeting()
     main.show()
     sys.exit(app.exec_())
