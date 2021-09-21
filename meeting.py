@@ -7,12 +7,15 @@ from PyQt5.QtCore import *
 from PyQt5.QtSql import *
 from Meeting_Main import Ui_MainWindow
 
+from InserMeeting import Ui_Dialog
 
 class meeting(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(meeting, self).__init__(parent)
         self.setupUi(self)
         self.format_datetime()
+
+        self.pushButton2.clicked.connect(self.insertDB)
 
         self.db = QSqlDatabase.addDatabase('QSQLITE')
         self.db.setDatabaseName('./meeting.db')
@@ -43,6 +46,9 @@ class meeting(QMainWindow, Ui_MainWindow):
         today = datetime.date.today()
         self.dateEdit1.setDate(today)
         self.dateEdit2.setDate(today + datetime.timedelta(days=1))
+
+    def insertDB(self):
+        self.insertDialog=Ui_Dialog()
 
 
 if __name__ == "__main__":
