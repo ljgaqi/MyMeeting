@@ -25,16 +25,16 @@ class WinForm(QWidget):
         grid.addWidget(self.open_btn)
         self.setLayout(grid)
 
-        def openDialog(self):
-            dialog = DateDialog(self)
-            dialog.datetime_inner.dateChanged.connect(self.deal_inner_slot)
-            dialog.Signal_OneParameter.connect(self.deal_emit_slot)
-            dialog.show()
+    def openDialog(self):
+        dialog = DateDialog(self)
+        dialog.datetime_inner.dateChanged.connect(self.deal_inner_slot)
+        dialog.Signal_OneParameter.connect(self.deal_emit_slot)
+        dialog.show()
 
-        def deal_inner_slot(self,date):
+    def deal_inner_slot(self,date):
             self.lineEdit_inner.setText(date.toString())
 
-        def deal_emit_slot(self,dateStr):
+    def deal_emit_slot(self,dateStr):
             self.lineEdit_emit.setText(dateStr)
 
 if __name__ == '__main__':
