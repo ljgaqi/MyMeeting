@@ -12,6 +12,9 @@ class insertDialog(QDialog,Ui_Dialog):
     def __init__(self, parent=None):
         super(insertDialog, self).__init__(parent)
         self.setupUi(self)
+        self.buttonBox.button(QDialogButtonBox.Ok).setText('确定')
+        self.buttonBox.button(QDialogButtonBox.Cancel).setText('取消')
+
 
 
 if __name__ == '__main__':
