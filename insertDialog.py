@@ -1,3 +1,4 @@
+import datetime
 import sys
 
 from PyQt5.QtGui import *
@@ -14,6 +15,7 @@ class insertDialog(QDialog,Ui_Dialog):
         self.setupUi(self)
         self.buttonBox.button(QDialogButtonBox.Ok).setText('确定')
         self.buttonBox.button(QDialogButtonBox.Cancel).setText('取消')
+        self.dateEdit.setDate(datetime.date.today())
 
 
 

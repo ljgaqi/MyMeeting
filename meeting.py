@@ -7,7 +7,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtSql import *
 from Meeting_Main import Ui_MainWindow
 
-from InserMeeting import Ui_Dialog
+from insertDialog import insertDialog
 
 class meeting(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -48,7 +48,8 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.dateEdit2.setDate(today + datetime.timedelta(days=1))
 
     def insertDB(self):
-        self.insertDialog=Ui_Dialog()
+        self.insertDialog=insertDialog()
+        self.insertDialog.show()
 
 
 if __name__ == "__main__":
