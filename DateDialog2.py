@@ -1,3 +1,5 @@
+import sys
+
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -26,7 +28,7 @@ class DateDialog(QDialog):
         layout.addWidget(self.datetime_inner)
         layout.addWidget(self.datetime_emit)
 
-        buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel, Qt.horizontal, self)
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel, self)
         buttons.accepted.connect(self.accept)
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
@@ -36,3 +38,10 @@ class DateDialog(QDialog):
     def emit_signal(self):
         date_str = self.datetime_emit.dateTime().toString()
         self.Signal_OneParameter.emit(date_str)
+
+
+if __name__ == '__main__':
+    app=QApplication(sys.argv)
+    dia=DateDialog()
+    dia.show()
+    sys.exit(app.exec())
