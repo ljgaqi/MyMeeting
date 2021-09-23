@@ -23,9 +23,9 @@ class insertDialog(QDialog,Ui_Dialog):
         timestr = self.comboBox_3.currentText()
         typestr = self.comboBox_2.currentText()
         comestr = self.lineEdit_2.text()
-        datelist=[datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
+        datelist = [datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
         # print(datelist)
-
+        self.signalAddMeeting.emit(datelist)
 
 
 if __name__ == '__main__':
