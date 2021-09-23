@@ -14,36 +14,19 @@
    <string>添加会议日程</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
+   <item row="5" column="0" colspan="5">
+    <widget class="QDialogButtonBox" name="buttonBox">
      <property name="font">
       <font>
        <family>幼圆</family>
        <pointsize>12</pointsize>
       </font>
      </property>
-     <property name="text">
-      <string>会议开始时间：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="5">
-    <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="4">
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="font">
-      <font>
-       <family>幼圆</family>
-       <pointsize>12</pointsize>
-      </font>
      </property>
     </widget>
    </item>
@@ -60,30 +43,24 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QDateEdit" name="dateEdit">
+   <item row="3" column="1" colspan="2">
+    <widget class="QComboBox" name="comboBox">
      <property name="font">
       <font>
        <family>幼圆</family>
        <pointsize>12</pointsize>
       </font>
      </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="font">
-      <font>
-       <family>幼圆</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>会议室名称：</string>
-     </property>
+     <item>
+      <property name="text">
+       <string>会议室一</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>会议室二</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="0" column="3" colspan="2">
@@ -131,7 +108,20 @@
      </item>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>会议开始时间：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
     <widget class="QLabel" name="label_5">
      <property name="font">
       <font>
@@ -144,27 +134,20 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
-    <widget class="QComboBox" name="comboBox">
+   <item row="0" column="1" colspan="2">
+    <widget class="QDateEdit" name="dateEdit">
      <property name="font">
       <font>
        <family>幼圆</family>
        <pointsize>12</pointsize>
       </font>
      </property>
-     <item>
-      <property name="text">
-       <string>会议室一</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>会议室二</string>
-      </property>
-     </item>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
+   <item row="4" column="1" colspan="2">
     <widget class="QComboBox" name="comboBox_2">
      <property name="font">
       <font>
@@ -182,6 +165,52 @@
        <string>建设工程</string>
       </property>
      </item>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="4">
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>会议室名称：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>中介机构名称：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
     </widget>
    </item>
   </layout>
