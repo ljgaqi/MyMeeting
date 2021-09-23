@@ -17,14 +17,16 @@ class insertDialog(QDialog,Ui_Dialog):
         self.buttonBox.button(QDialogButtonBox.Cancel).setText('取消')
         self.dateEdit.setDate(datetime.date.today())
 
-        datestr=self.dateEdit.date().toString()
-        roomstr=self.comboBox.currentText()
-        namestr=self.lineEdit.text()
-        timestr=self.comboBox_3.currentText()
-        typestr=self.comboBox_2.currentText()
-        comestr=self.lineEdit_2.text()
-        datelist=[datestr+timestr,namestr,roomstr,comestr,typestr]
-        print(datelist)
+        datestr = self.dateEdit.date().toString(Qt.ISODate)
+        roomstr = self.comboBox.currentText()
+        namestr = self.lineEdit.text()
+        timestr = self.comboBox_3.currentText()
+        typestr = self.comboBox_2.currentText()
+        comestr = self.lineEdit_2.text()
+        datelist=[datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
+        # print(datelist)
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
