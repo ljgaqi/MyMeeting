@@ -23,10 +23,13 @@ class insertDialog(QDialog,Ui_Dialog):
         timestr = self.comboBox_3.currentText()
         typestr = self.comboBox_2.currentText()
         comestr = self.lineEdit_2.text()
-        datelist = [datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
+        self.datelist = [datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
         # print(datelist)
-        self.signalAddMeeting.emit(datelist)
-
+    def accept(self):
+        if self.lineEdit.text()==None:
+            QMessageBox.about(self,'注意','项目名称不能为空！')
+        self.signalAddMeeting.emit(self.datelist)
+        self.close()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

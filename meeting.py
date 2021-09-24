@@ -49,7 +49,12 @@ class meeting(QMainWindow, Ui_MainWindow):
 
     def insertDB(self):
         self.insertDialog=insertDialog()
+        self.insertDialog.signalAddMeeting.connect(self.Insert_Date_DB)
         self.insertDialog.show()
+
+    def Insert_Date_DB(self,date_list):
+
+        print(date_list)
 
 
 if __name__ == "__main__":
