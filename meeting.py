@@ -48,7 +48,7 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.dateEdit2.setDate(today + datetime.timedelta(days=1))
 
     def insertDB(self):
-        self.insertDialog=insertDialog()
+        self.insertDialog = insertDialog()
         self.insertDialog.signalAddMeeting.connect(self.Insert_Date_DB)
         self.insertDialog.show()
 

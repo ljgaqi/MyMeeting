@@ -16,7 +16,7 @@ class insertDialog(QDialog,Ui_Dialog):
         self.buttonBox.button(QDialogButtonBox.Ok).setText('确定')
         self.buttonBox.button(QDialogButtonBox.Cancel).setText('取消')
         self.dateEdit.setDate(datetime.date.today())
-
+    def format_date(self):
         datestr = self.dateEdit.date().toString(Qt.ISODate)
         roomstr = self.comboBox.currentText()
         namestr = self.lineEdit.text()
@@ -26,10 +26,14 @@ class insertDialog(QDialog,Ui_Dialog):
         self.datelist = [datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
         # print(datelist)
     def accept(self):
-        if self.lineEdit.text()==None:
-            QMessageBox.about(self,'注意','项目名称不能为空！')
-        self.signalAddMeeting.emit(self.datelist)
-        self.close()
+        if self.lineEdit.text() == "":
+            QMessageBox.about(self, "注意", "项目名称不能为空！")
+        elif self.lineEdit_2.text() == "":
+            QMessageBox.about(self, "注意", "中介机构名称不能为空！")
+        else:
+            self.format_date()
+            self.signalAddMeeting.emit(self.datelist)
+            self.close()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
