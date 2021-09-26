@@ -52,10 +52,10 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.insertDialog.signalAddMeeting.connect(self.Insert_Date_DB)
         self.insertDialog.show()
 
-    def Insert_Date_DB(self,date_list):
-
+    def Insert_Date_DB(self, date_list):
         print(date_list)
-
+        quary = QSqlQuery()
+        quary.exec_("Insert into DateMeeting ")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
