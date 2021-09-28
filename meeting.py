@@ -14,7 +14,7 @@ class meeting(QMainWindow, Ui_MainWindow):
         super(meeting, self).__init__(parent)
         self.setupUi(self)
         self.format_datetime()
-
+        self.pushButton1.clicked.connect(self.SearchMeeting)
         self.pushButton2.clicked.connect(self.insertDB)
 
         self.db = QSqlDatabase.addDatabase('QSQLITE')
@@ -34,6 +34,7 @@ class meeting(QMainWindow, Ui_MainWindow):
 
         self.tableView.setModel(self.model)
 
+
         self.tableView.setColumnWidth(0, 140)
         self.tableView.setColumnWidth(1, 400)
         self.tableView.setColumnWidth(2, 200)
@@ -41,6 +42,8 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.tableView.setColumnWidth(4, 80)
         self.tableView.setColumnWidth(5, 80)
 
+    def SearchMeeting(self):
+        pass
 
     def format_datetime(self):
         today = datetime.date.today()
