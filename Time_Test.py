@@ -5,9 +5,9 @@ db = QSqlDatabase.addDatabase('QSQLITE')
 db.setDatabaseName('./meeting.db')
 db.open()
 
-datelist = [5, 'testname','2021-09-28 9:00:00:000' ,'会议室一', 'test', '政府采购']
+datelist = ['testname','2021-09-28 9:00:00:000' ,'会议室一', 'test', '政府采购']
 query = QSqlQuery()
-query.prepare("Insert Into DateMeeting (No,name,datetime,room,company,type) values (?,?,?,?,?,?)")
+query.prepare("Insert Into DateMeeting (name,datetime,room,company,type) values (?,?,?,?,?)")
 
 for list in datelist:
     query.addBindValue(list)
