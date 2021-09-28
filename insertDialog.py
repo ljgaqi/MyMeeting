@@ -17,16 +17,19 @@ class insertDialog(QDialog,Ui_Dialog):
         self.buttonBox.button(QDialogButtonBox.Cancel).setText('取消')
         self.dateEdit.setDate(datetime.date.today())
     def format_date(self):
+        nonumber = self.lineEdit_3.text()
         datestr = self.dateEdit.date().toString(Qt.ISODate)
         roomstr = self.comboBox.currentText()
         namestr = self.lineEdit.text()
         timestr = self.comboBox_3.currentText()
         typestr = self.comboBox_2.currentText()
         comestr = self.lineEdit_2.text()
-        self.datelist = [datestr+" "+timestr+":00:000", namestr, roomstr, comestr, typestr]
+        self.datelist = [nonumber, namestr, datestr+" "+timestr+":00:000", roomstr, comestr, typestr]
         # print(datelist)
     def accept(self):
-        if self.lineEdit.text() == "":
+        if self.lineEdit_3.text() == "":
+            QMessageBox.about((self, "注意", "项目编号不能为空"))
+        elif self.lineEdit.text() == "":
             QMessageBox.about(self, "注意", "项目名称不能为空！")
         elif self.lineEdit_2.text() == "":
             QMessageBox.about(self, "注意", "中介机构名称不能为空！")

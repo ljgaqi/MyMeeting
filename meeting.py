@@ -34,12 +34,12 @@ class meeting(QMainWindow, Ui_MainWindow):
 
         self.tableView.setModel(self.model)
 
-        self.tableView.setColumnWidth(0, 40)
+        self.tableView.setColumnWidth(0, 140)
         self.tableView.setColumnWidth(1, 400)
         self.tableView.setColumnWidth(2, 200)
-        self.tableView.setColumnWidth(3, 100)
-        self.tableView.setColumnWidth(4, 100)
-        self.tableView.setColumnWidth(4, 100)
+        self.tableView.setColumnWidth(3, 80)
+        self.tableView.setColumnWidth(4, 80)
+        self.tableView.setColumnWidth(5, 80)
 
 
     def format_datetime(self):
@@ -55,7 +55,16 @@ class meeting(QMainWindow, Ui_MainWindow):
     def Insert_Date_DB(self, date_list):
         print(date_list)
         quary = QSqlQuery()
-        quary.exec_("Insert into DateMeeting ")
+        quary.prepare("Insert into DateMeeting (no,name,datetime,room,company,type) values (?,?,?,?,?,?)")
+
+        for list in date_list:
+            quary.addBindValue(list)
+
+        quary.exec()
+        self.db.commit()
+        self.db.close()
+
+        QMessageBox.about(self, "注意", "会议日程添加成功")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
