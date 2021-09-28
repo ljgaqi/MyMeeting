@@ -1,6 +1,18 @@
 import sys
-import datetime
-import time
+from PyQt5.QtSql import *
 
-today = datetime.date.today()
-print(today)
+db = QSqlDatabase.addDatabase('QSQLITE')
+db.setDatabaseName('./meeting.db')
+db.open()
+
+datelist = [5, 'testname','2021-09-28 9:00:00:000' ,'会议室一', 'test', '政府采购']
+query = QSqlQuery()
+query.prepare("Insert Into DateMeeting (No,name,datetime,room,company,type) values (?,?,?,?,?,?)")
+
+for list in datelist:
+    query.addBindValue(list)
+
+query.exec()
+
+db.commit()
+db.close()
