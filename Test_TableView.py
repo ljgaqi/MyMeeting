@@ -24,7 +24,7 @@ class Test_TableView(QWidget):
         # self.model.setTable('DateMeeting')
         # self.model.select()
         self.model = QSqlQueryModel()
-        self.model.setQuery("select * from DateMeeting where datetime > '2021-09-28 8:00:00:000' and datetime < '2021-10-22 8:00:00:000'")
+        self.model.setQuery("select * from DateMeeting where datetime > '2021-09-28 8:00:00:000' and datetime < '2021-10-22 8:00:00:000' and room = '会议室一' order by datetime")
 
     def createTable(self):
         self.tableview = QTableView()

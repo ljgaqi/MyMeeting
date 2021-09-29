@@ -24,7 +24,7 @@ class insertDialog(QDialog,Ui_Dialog):
         timestr = self.comboBox_3.currentText()
         typestr = self.comboBox_2.currentText()
         comestr = self.lineEdit_2.text()
-        self.datelist = [nonumber, namestr, datestr+" "+timestr+":00:000", roomstr, comestr, typestr]
+        self.datelist = [nonumber, namestr, datestr+" "+timestr+".00:000", roomstr, comestr, typestr]
         # print(datelist)
     def accept(self):
         if self.lineEdit_3.text() == "":
