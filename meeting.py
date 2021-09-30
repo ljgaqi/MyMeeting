@@ -53,8 +53,17 @@ class meeting(QMainWindow, Ui_MainWindow):
         endtime = self.timeEdit2.time().toString()
         begin = begindate + " " + begintime
         end = enddate + " " + endtime
+        if self.comboBox1.currentText() == '全部':
+            roomid = None
+        else:
+            roomid = self.comboBox1.currentText()
+        if self.comboBox2.currentText() == '全部':
+            typeid = None
+        else:
+            typeid = self.comboBox2.currentText()
 
-        print(begin, end)
+        print(begin, end, roomid, typeid)
+        seachSql='select * from DateMeeting where '
 
     def format_datetime(self):
         today = datetime.date.today()
