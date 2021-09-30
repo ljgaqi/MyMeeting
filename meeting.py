@@ -21,10 +21,14 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.db.setDatabaseName('./meeting.db')
         self.db.open()
 
-        self.model = QSqlTableModel()
-        self.model.setTable('DateMeeting')
-        self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
-        self.model.select()
+        # self.model = QSqlTableModel()
+        # self.model.setTable('DateMeeting')
+        # self.model.select()
+        # self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
+
+        self.model = QSqlQueryModel()
+        self.model.setQuery("select * from DateMeeting")
+
         self.model.setHeaderData(0, Qt.Horizontal, '序号')
         self.model.setHeaderData(1, Qt.Horizontal, '会议名称')
         self.model.setHeaderData(2, Qt.Horizontal, '会议时间')
@@ -43,7 +47,14 @@ class meeting(QMainWindow, Ui_MainWindow):
         self.tableView.setColumnWidth(5, 80)
 
     def SearchMeeting(self):
-        pass
+        begindate = self.dateEdit1.date().toString(Qt.ISODate)
+        begintime = self.timeEdit1.time().toString()
+        enddate = self.dateEdit2.date().toString(Qt.ISODate)
+        endtime = self.timeEdit2.time().toString()
+        begin = begindate + " " + begintime
+        end = enddate + " " + endtime
+
+        print(begin, end)
 
     def format_datetime(self):
         today = datetime.date.today()
@@ -65,7 +76,6 @@ class meeting(QMainWindow, Ui_MainWindow):
 
         quary.exec()
         self.db.commit()
-        self.db.close()
 
         QMessageBox.about(self, "注意", "会议日程添加成功")
 
